@@ -34,18 +34,15 @@ def main():
     source = input()
     if source.upper() == "F":
         filename = input()
-        while 'a' in filename:
-            filename = input()
-        try:
-            with open(filename, 'r') as file:
-                n = int(file.readline().strip())
-                parents = list(map(int, file.readline().strip().split()))
-        except FileNotFoundError:
-            sys.exit()
-    else:
+        with open("test/" + filename, 'r') as f:
+            n = int(f.readline())
+            parents = list(map(int, f.readline().split()))
+            print(compute_height(n, parents))
+    elif source.upper() == "I":
         n = int(input())
         parents = list(map(int, input().split()))
         print(compute_height(n, parents))
+    else: exit()
     pass
 
 main()
